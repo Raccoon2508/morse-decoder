@@ -40,46 +40,33 @@ const MORSE_TABLE = {
 function decode(expr) {
     
 
-let alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-let morseCodes=['1011','11101010','11101110','111010','10','10101110','111110','10101010','1010','10111111','111011','10111010','1111','1110','111111','10111110','11111011','101110','101010','11','101011','10101011','101111','11101011','11101111','11111010'];
+let alphabet=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','0'];
+let morseCodes=['0000001011','0011101010','0011101110','0000111010','0000000010','0010101110','0000111110','0010101010','0000001010','0010111111','0000111011','0010111010','0000001111','0000001110','0000111111','0010111110','0011111011','0000101110','0000101010','0000000011','0000101011','0010101011','0000101111','0011101011','0011101111','0011111010','1011111111','1010111111','1010101111','1010101011','1010101010','1110101010','1111101010','1111111010','1111111110','1111111111'];
 
 let morseSymbol='';
 let word='';
 let counter=0;
 
-for(let i=0; i<=expr.length;i++){
-  if(expr[i]==='0'||i==expr.length){
-    if(counter!==0){
-      word=word+alphabet[morseCodes.indexOf(morseSymbol)];
-      counter=0;
-      morseSymbol='';
-      
-      }
-    
-   
-    }
-  else if(expr[i]==='1'){
-    morseSymbol=morseSymbol+expr[i]+expr[i+1];
-    i++;
+
+for(let i=0; i<expr.length;i++){
+  if(expr[i]!=='*'){
+    morseSymbol=morseSymbol+expr[i];
     counter++;
     
-    }
-  else if(expr[i]==='*'){
-    if(counter!==0){
+    if(counter==10){
+      console.log(morseSymbol);
       word=word+alphabet[morseCodes.indexOf(morseSymbol)];
       counter=0;
-      morseSymbol='';
-      
-      }
-    word+=' ';
-    counter=0;
-    morseSymbol='';
-    i+=10;
-    }  
+      morseSymbol='';}
+      }else{
+    word=word+' ';
+    i+=9;
+    counter=0;  
+    }
   
   }
-return word;
-}  
+  return word;
+}
 
 module.exports = {
     decode

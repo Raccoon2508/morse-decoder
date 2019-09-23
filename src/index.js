@@ -53,7 +53,7 @@ for(let i=0; i<=expr.length;i++){
       word=word+alphabet[morseCodes.indexOf(morseSymbol)];
       counter=0;
       morseSymbol='';
-      console.log(word);
+      
       }
     
    
@@ -62,14 +62,14 @@ for(let i=0; i<=expr.length;i++){
     morseSymbol=morseSymbol+expr[i]+expr[i+1];
     i++;
     counter++;
-    console.log(morseSymbol);
+    
     }
   else if(expr[i]==='*'){
     if(counter!==0){
       word=word+alphabet[morseCodes.indexOf(morseSymbol)];
       counter=0;
       morseSymbol='';
-      console.log(word);
+      
       }
     word+=' ';
     counter=0;
@@ -80,7 +80,6 @@ for(let i=0; i<=expr.length;i++){
   }
 return word;
 }  
-
 
 module.exports = {
     decode

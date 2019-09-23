@@ -80,7 +80,7 @@ for(let i=0; i<=expr.length;i++){
   }
 return word;
 }  
-}
+
 
 module.exports = {
     decode
